@@ -36,9 +36,7 @@ const App = () => {
         description:description.current?.value,
       })
       console.log(response.data.todo);
-      // setData((prevData) => (prevData ? [...prevData, response.data.todo] : [response.data.todo]));
-      // if (title.current) title.current.value = '';
-      // if (description.current) description.current.value = '';
+    
     } catch (err) {
       console.log(error);
       
