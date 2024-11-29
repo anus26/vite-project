@@ -45,6 +45,33 @@ const App = () => {
       
     }
   }
+  const deleteUser=async(id)=>{
+    
+    try {
+      const response=await axios.delete(`http://localhost:4000/api/v1/todo/${id}`)
+      console.log(response.data.todo);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+  const edittodo=async(id)=>{
+    const newtitle=prompt('enter title')
+    const newdescription=prompt('enter description')
+    try {
+      const response=await axios.put(`http://localhost:4000/api/v1/todo/${id}`,{
+    title:newtitle,
+    description:newdescription
+
+      })
+      console.log(response.data);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
   return (
     <>
       <h1>Todo  </h1>
@@ -61,7 +88,8 @@ const App = () => {
             <div key={item.id}>
               <h1>{item.title}</h1>
               <h1>{item.description}</h1>
-              {/* <button onClick={() => deleteUser(item.id)}>delete</button> */}
+              <button onClick={() => deleteUser(item.id)}>delete</button>
+              <button onClick={() => edittodo(item.id)}>edit</button>
             </div>
           );
         })
